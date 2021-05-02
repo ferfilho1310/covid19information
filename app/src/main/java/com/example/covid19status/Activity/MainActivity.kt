@@ -13,9 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
 
-val activityModule = module {
-    factory { MainActivity() }
-}
+
 
 class MainActivity : AppCompatActivity() {
 

@@ -5,14 +5,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-val netWorkModule = module(override = true) {
-
-    factory { getRetrofit() }
-    factory { retrofitDadoMundo() }
-    single { provideCovid19(get()) }
-
-}
-
 private var retrofit: Retrofit? = null
 var URL = "https://covid19-brazil-api.now.sh/api/report/v1/"
 var URL_DADOS_COVID_MUNDO = "https://covid19-brazil-api.now.sh/api/report/v1/countries/"
