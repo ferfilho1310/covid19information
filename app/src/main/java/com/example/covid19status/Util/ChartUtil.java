@@ -21,16 +21,10 @@ import java.util.List;
 public class ChartUtil {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public static void morteCovidPorPais(ListDadosCovidMundo listDadosCovidMundo, PieChart barChart) {
+    public static void morteCovidPorPais(List<PieEntry> lsPieEntryCovidMundo, PieChart barChart) {
 
-        List<PieEntry> mortes = new ArrayList();
         PieDataSet dataSet;
-
-        listDadosCovidMundo.getData().stream().filter(dadosCovidMundo -> dadosCovidMundo.getDeaths() >= 30000)
-                .forEach(dadosCovidMundo -> mortes.add(new PieEntry(Integer.parseInt(String.valueOf(dadosCovidMundo.getDeaths())),
-                        dadosCovidMundo.getCountry())));
-
-        dataSet = new PieDataSet(mortes, "\n*Paises com mais de 30 mil mortes");
+        dataSet = new PieDataSet(lsPieEntryCovidMundo, "\n*Paises com mais de 30 mil mortes");
 
         dataSet.setColors(getColors());
         PieData data = new PieData(dataSet);
@@ -38,17 +32,11 @@ public class ChartUtil {
         barChart.invalidate();
     }
 
-    public static void morteCovidPorEstado(ListDadosCovidBrazil listDadosCovidBrazil, PieChart pieChart) {
-        List<PieEntry> mortes = new ArrayList();
+    public static void morteCovidPorEstado(List<PieEntry> lsPieEntryCovidBrasil, PieChart pieChart) {
+
         PieDataSet dataSet;
 
-        for (DadosCovidBrazil dadosCovidBrazil : listDadosCovidBrazil.getDadosCovidBrazilList()) {
-            if (dadosCovidBrazil.getDeaths() >= 5000) {
-                mortes.add(new PieEntry(Integer.parseInt(String.valueOf(dadosCovidBrazil.getDeaths())), dadosCovidBrazil.getState()));
-            }
-        }
-
-        dataSet = new PieDataSet(mortes, "\n*Estados com mais de 5 mil mortes");
+        dataSet = new PieDataSet(lsPieEntryCovidBrasil, "\n*Estados com mais de 5 mil mortes");
 
         dataSet.setColors(getColors());
         PieData data = new PieData(dataSet);

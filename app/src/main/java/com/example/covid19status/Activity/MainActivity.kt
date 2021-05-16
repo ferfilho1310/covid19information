@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.covid19status.R
 import com.example.covid19status.Util.ChartUtil
 import com.example.covid19status.ViewModels.ViewModelCovid
+import com.github.mikephil.charting.data.PieEntry
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
