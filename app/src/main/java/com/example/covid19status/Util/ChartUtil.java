@@ -20,11 +20,9 @@ import java.util.List;
 
 public class ChartUtil {
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void morteCovidPorPais(List<PieEntry> lsPieEntryCovidMundo, PieChart barChart) {
 
-        PieDataSet dataSet;
-        dataSet = new PieDataSet(lsPieEntryCovidMundo, "\n*Paises com mais de 30 mil mortes");
+        PieDataSet dataSet  = new PieDataSet(lsPieEntryCovidMundo, "\n*Paises com mais de 30 mil mortes");
 
         dataSet.setColors(getColors());
         PieData data = new PieData(dataSet);
@@ -34,9 +32,17 @@ public class ChartUtil {
 
     public static void morteCovidPorEstado(List<PieEntry> lsPieEntryCovidBrasil, PieChart pieChart) {
 
-        PieDataSet dataSet;
+        PieDataSet dataSet = new PieDataSet(lsPieEntryCovidBrasil, "\n*Estados com mais de 6 mil mortes");
 
-        dataSet = new PieDataSet(lsPieEntryCovidBrasil, "\n*Estados com mais de 5 mil mortes");
+        dataSet.setColors(getColors());
+        PieData data = new PieData(dataSet);
+        pieChart.setData(data);
+        pieChart.invalidate();
+    }
+
+    public static void morteCovidPorBrazilPorData(List<PieEntry> lsPieEntryCovidBrasil, PieChart pieChart) {
+
+        PieDataSet dataSet = new PieDataSet(lsPieEntryCovidBrasil, "\n*Estados com mais de 6 mil mortes");
 
         dataSet.setColors(getColors());
         PieData data = new PieData(dataSet);
