@@ -88,6 +88,7 @@ class ViewModelCovid(
             runCatching {
                 covidRespository.getDadoCovidPorData(id)
             }.onSuccess {
+                mortesCovidBrazilPorData.clear()
                 it.dadosCovidBrazilList
                     .filter { dadosCovidBrazil -> dadosCovidBrazil.deaths!!.toInt() > 6000 }
                     .forEach { dados ->
